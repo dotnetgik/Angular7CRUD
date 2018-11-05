@@ -1,3 +1,46 @@
-<p>
-  employeeupdate works!
-</p>
+<div class="container" style="border:thin">
+  
+    <form #EditForm='ngForm' name="editform" (ngSubmit)="Register(EditForm)" class="form-horizontal" style="width:50%"  >
+         
+     <div class="form-group" >
+               <label class="control-label col-sm-2" for="fname" >First Name:</label>
+               <div class="col-sm-10">
+                 <input  style="width:50%"    type="text" class="form-control"
+                  width="50%" id="fname" placeholder="Enter first name"
+                  name="firstname" firstname required [(ngModel)]='objemp.firstname'  #firstname="ngModel">
+              <span class="help-bpx" *ngIf="firstname.touched && !firstname.valid ">Required</span>
+               </div>
+             </div>
+             <div class="form-group" >
+               <label class="control-label col-sm-2" for="email">Last Name:</label>
+               <div class="col-sm-10">
+                 <input style="width:50%"   required type="text" class="form-control" width="50%" 
+                 id="lastname" placeholder="Enter Last Name" name="lastname" lastname required [(ngModel)]='objemp.lastname'  #lastname="ngModel">
+                 <span class="help-bpx" *ngIf="lastname.touched && !lastname.valid ">Required</span>
+               </div> 
+             </div>
+             <div class="form-group" >
+               <label class="control-label col-sm-2" for="Gender">Gender:</label>
+               <div class="col-sm-10">
+                 <select name="gender" gender required [(ngModel)]='objemp.gender'  #gender="ngModel">
+                 <option value="0" selected disabled>Please Select</option>
+                 <option value="1">Male</option>
+                 <option value="2">Female</option>
+                 <span class="help-bpx" *ngIf="gender.touched && !gender.valid ">required</span>
+               </select>
+               </div>
+             </div>
+             <div class="form-group" >
+               <label class="control-label col-sm-2" for="email">Email:</label>
+               <div class="col-sm-10">
+                 <input #email="ngModel"  style="width:50%" type="email" [(ngModel)]='objemp.email' class="form-control" width="50%" id="email" placeholder="Enter email" name="email">
+                 <span class="help-bpx" *ngIf="email.touched && !email.valid ">**</span>
+               </div>
+             </div>
+              <div class="form-group">        
+               <div class="col-sm-offset-2 col-sm-10">
+                 <button  type="submit" class="btn btn-primary">Submit</button>
+               </div>
+             </div>
+           </form>
+         </div>

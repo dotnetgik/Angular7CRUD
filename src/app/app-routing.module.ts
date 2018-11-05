@@ -8,7 +8,8 @@ import { EmployeeAddComponent } from './employee-add/employee-add.component';
 const routes: Routes = [{path:'',component:AngularCRUDComponent},
 {path:'Edit',component:EmployeeupdateComponent},
 {path:'Add',component:EmployeeAddComponent},
-{path:'delete',component:EmployeedeleteComponent}];
+{path:'delete',component:EmployeedeleteComponent},
+{path:'Home',component:AngularCRUDComponent}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

@@ -8,6 +8,8 @@ import { EmployeeAddComponent } from './employee-add/employee-add.component';
 import { EmployeeupdateComponent } from './employeeupdate/employeeupdate.component';
 import { EmployeedeleteComponent } from './employeedelete/employeedelete.component';
 import { FormsModule }   from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import {EmployeeDataService} from '../app/DataService/EmployeeDataService'
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,9 +21,9 @@ import { FormsModule }   from '@angular/forms';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,FormsModule
+    AppRoutingModule,FormsModule,HttpClientModule
   ],
-  providers: [],
+  providers: [EmployeeDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

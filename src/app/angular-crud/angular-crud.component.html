@@ -1,27 +1,34 @@
 
 <div class="container">
-<input  type="button" class="btn btn-primary" (click)="ClearValues()" data-toggle="modal" data-target="#myModal" value="Create New">
+<input  type="button" class="btn btn-primary" (click)="loadAddnew()"  data-toggle="modal" data-target="#myModal" value="Create New">
 
 <hr>
 
-<table class="table">
+
+<div *ngIf="!dataavailbale">
+  <h4> No Employee Data is present Click Add new to add Data.</h4>
+</div>
+
+
+<table class="table" *ngIf="dataavailbale">
     <thead>
-      <tr>
-        <th scope="col">Sr No</th>
-        <th scope="col">First Name</th>
+      <tr >
+        <th scope="col">Sr.No</th>
+        <th scope="col">First name</th>
         <th scope="col">Last Name</th>
         <th scope="col">Email</th>
         <th scope="col" style="align-content: center">Action</th>
       </tr>
     </thead>
     <tbody>
-        <tr>
-            <td scope="col">1</td>
-            <td scope="col">Mangesh</td>
-            <td scope="col">Gaherwar</td>
-            <td scope="col">Mangesh.g@intelgain.com</td>
+        <tr *ngFor="let e of emplist let i = index ">
+            <td scope="col">{{i+1}}</td>
+            <td scope="col">{{e.fname}}</td>
+            <td scope="col">{{e.lname}}</td>
+            <td scope="col">{{e.email}}</td>
+            <td style="display:none">{{e.id}}</td>
             <td scope="col">
-                <button type="button" class="btn btn-default btn-primary" data-toggle="modal" data-target="#myModaledit">
+                <button type="button" class="btn btn-default btn-primary" (click)="loadnewForm()" data-toggle="modal" data-target="#myModaledit">
                     <span class="glyphicon glyphicon-edit"></span> Edit
                   </button>
                   |
@@ -33,37 +40,38 @@
           </tr>
     </tbody>
   </table>
-
   <div id="myModal" class="modal fade" role="dialog">
       <div class="modal-dialog">
     <div class="modal-content">
           <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <button type="button" (click)="TakeHome()" class="close" data-dismiss="modal">&times;</button>
             <h4 class="modal-primary">Employee Add</h4>
           </div>
           <div class="modal-body">
-           <app-employee-add [objemp]=""></app-employee-add>
+ 
+           <app-employee-add></app-employee-add>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-default" (click)="TakeHome()"  data-dismiss="modal">Close</button>
           </div>
         </div>
-    
+      
       </div>
-    </div>
+      </div>
+
 
     <div id="myModaledit" class="modal fade" role="dialog">
         <div class="modal-dialog">
       <div class="modal-content">
             <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <button type="button" class="close" (click)="TakeHome()" data-dismiss="modal">&times;</button>
               <h4 class="modal-title">Edit</h4>
             </div>
             <div class="modal-body">
-             <app-employeeupdate cleardata="ajkaja"></app-employeeupdate>
+             <app-employeeupdate [isReset] ="resetForm" #regForm></app-employeeupdate>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-default" (click)="TakeHome()" data-dismiss="modal">Close</button>
             </div>
           </div>
       
