@@ -13,7 +13,7 @@ export class EmployeeAddComponent implements OnInit {
   @Input()  cleardata: boolean = false;
   objtempemp:Employee;
   @Input() objemp :Employee=new Employee();;
-  @ViewChild('btnsubmit') addbutton: ElementRef;
+  @ViewChild('closeBtn') cb: ElementRef;
 constructor(private dataservice:EmployeeDataService,private route:Router) {
  
  }
@@ -43,7 +43,6 @@ constructor(private dataservice:EmployeeDataService,private route:Router) {
     
   this.dataservice.AddEmployee(this.objtempemp).subscribe(res=>{
     alert("Employee Added successfully");
-    this.addbutton.nativeElement. 
     this.TakeHome();
 
   }
@@ -52,7 +51,9 @@ constructor(private dataservice:EmployeeDataService,private route:Router) {
   
   } 
   TakeHome(){
-    this.route.navigateByUrl('Home');
+    console.log(this.cb);
+    this.cb.nativeElement.click();
+    this.route.navigateByUrl('');
   }
 
 }

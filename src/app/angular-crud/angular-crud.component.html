@@ -1,6 +1,6 @@
 
 <div class="container">
-<input  type="button" class="btn btn-primary" (click)="loadAddnew()"  data-toggle="modal" data-target="#myModal" value="Create New">
+<input  type="button" class="btn btn-primary"   data-toggle="modal" data-target="#myModal" value="Create New">
 
 <hr>
 
@@ -40,24 +40,31 @@
           </tr>
     </tbody>
   </table>
-  <div id="myModal" class="modal fade" role="dialog">
-      <div class="modal-dialog">
-    <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" (click)="TakeHome()" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-primary">Employee Add</h4>
-          </div>
-          <div class="modal-body">
- 
-           <app-employee-add></app-employee-add>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" (click)="TakeHome()"  data-dismiss="modal">Close</button>
-          </div>
+   
+
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+  <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" (click)="TakeHome()" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-primary">Employee Add</h4>
         </div>
-      
+        <div class="modal-body">
+
+ 
+          <app-employee-add></app-employee-add> 
+        
+        </div>
+        <div class="modal-footer">
+          <button type="button" #closeBtn  class="btn btn-default" (click)="TakeHome()"  data-dismiss="modal">Close</button>
+        </div>
       </div>
-      </div>
+    
+    </div>
+    </div>
+
+
+
 
 
     <div id="myModaledit" class="modal fade" role="dialog">

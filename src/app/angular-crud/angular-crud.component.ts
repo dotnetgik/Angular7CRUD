@@ -57,6 +57,7 @@ if(this.emplist.length>1)
      this.addcomponent.objemp.lastname=""
      this.addcomponent.objemp.id=""
      this.addcomponent.objemp.gender=0
+     this.route.navigateByUrl('Add');
   }
  
   loadnewForm()
