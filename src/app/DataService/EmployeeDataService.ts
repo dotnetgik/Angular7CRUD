@@ -36,12 +36,13 @@ return this.http.post<Employee>(ROOT_URL+'/Employees',body,{headers});
   ///
 EditEmployee(emp:Employee)  
 {  
+  console.log( emp);
     const params = new HttpParams().set('ID', emp.id);  
   const headers = new HttpHeaders().set('content-type', 'application/json');  
   var body = {  
                     Fname:emp.firstname,Lname:emp.lastname,Email:emp.email,ID:emp.id  
              }  
-        return this.http.put<Employee>(ROOT_URL+'/Employees/'+emp.id,body,{headers,params})  
+        return this.http.put<Employee>(ROOT_URL+'Employees/'+emp.id,body,{headers,params})  
   
 }
 DeleteEmployee(emp:Employee)  

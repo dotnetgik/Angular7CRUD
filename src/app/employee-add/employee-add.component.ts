@@ -1,4 +1,4 @@
-import { Component, OnInit,Input, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit,Input, ViewChild, ElementRef, EventEmitter, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Employee } from 'src/Models/Employee';
 import { Router } from '@angular/router';
@@ -11,6 +11,7 @@ import {EmployeeDataService} from '../DataService/EmployeeDataService'
 export class EmployeeAddComponent implements OnInit {
   @Input()  dynamicdata: string = 'Employee Add';
   @Input()  cleardata: boolean = false;
+  @Output() nameEvent = new EventEmitter<string>();
   objtempemp:Employee;
   @Input() objemp :Employee=new Employee();;
   @ViewChild('closeBtn') cb: ElementRef;
@@ -44,14 +45,13 @@ constructor(private dataservice:EmployeeDataService,private route:Router) {
   this.dataservice.AddEmployee(this.objtempemp).subscribe(res=>{
     alert("Employee Added successfully");
     this.TakeHome();
-
-  }
+}
   )
   
   
   } 
   TakeHome(){
-    console.log(this.cb);
+    this.nameEvent.emit("ccc");
     this.cb.nativeElement.click();
     this.route.navigateByUrl('');
   }

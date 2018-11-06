@@ -1,6 +1,6 @@
 <div class="container" style="border:thin">
   
-    <form #EditForm='ngForm' name="editform" (ngSubmit)="Register(EditForm)" class="form-horizontal" style="width:50%"  >
+    <form #EditForm='ngForm' name="editform" (ngSubmit)="EditEmployee(EditForm)" class="form-horizontal" style="width:50%"  >
          
      <div class="form-group" >
                <label class="control-label col-sm-2" for="fname" >First Name:</label>
@@ -44,3 +44,4 @@
              </div>
            </form>
          </div>
+         <button style="display:none" type="button" #closeBtn  class="btn btn-default"   data-dismiss="modal">Close</button>

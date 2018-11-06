@@ -17,16 +17,24 @@ export class AngularCRUDComponent implements OnInit {
   
   emplist:Employee[];
  dataavailbale:Boolean=false;
+ tempemp:Employee
  private resetForm:boolean = false
   constructor(private dataservce:EmployeeDataService,private route:Router) {
      
  }
 
   ngOnInit() {
+    this.LoadData();
+    
+  }
+
+  LoadData(){
     this.dataservce.getEmployee().subscribe((tempdate) =>{ 
       this.emplist=tempdate;
-if(this.emplist.length>1)
+     
+if(this.emplist.length>0)
 {
+
   this.dataavailbale=true;
 }
 
@@ -37,39 +45,47 @@ if(this.emplist.length>1)
        console.log(err);  
      } 
   }
-  deleteconfirmation(){
+  deleteconfirmation(id:string){
+   
     if(confirm("Are you sure you want to delete this ?"))
     {
-     alert("yes");
+      this.tempemp =new Employee();
+      this.tempemp.id=id;
+    this.dataservce.DeleteEmployee(this.tempemp).subscribe(res=>{
+        alert("Deleted successfully !!!");
+        this.LoadData();
+    })
     }
-    else{
-      alert("No");
-    }
-
-    
   } 
-  
+  @ViewChild('empadd') addcomponent: EmployeeAddComponent
   @ViewChild('regForm') editcomponent: EmployeeupdateComponent
-  @ViewChild('regForm') addcomponent: EmployeeAddComponent
-  loadAddnew (){
+
+  
+
+  loadAddnew ()
+  {
+    
     this.addcomponent.objemp.email=""
      this.addcomponent.objemp.firstname=""
      this.addcomponent.objemp.lastname=""
      this.addcomponent.objemp.id=""
      this.addcomponent.objemp.gender=0
-     this.route.navigateByUrl('Add');
-  }
+ }
  
-  loadnewForm()
+  loadnewForm(id:string,email:string,firstname:string,lastname:string,gender:number)
   {
-    
-     this.editcomponent.objemp.email=""
-     this.editcomponent.objemp.firstname=""
-     this.editcomponent.objemp.lastname=""
-     this.editcomponent.objemp.id=""
-     this.editcomponent.objemp.gender=0
+   
+     this.editcomponent.objemp.email=email
+     this.editcomponent.objemp.firstname=firstname
+     this.editcomponent.objemp.lastname=lastname
+     this.editcomponent.objemp.id=id
+     this.editcomponent.objemp.gender=gender
 
    }
-  
-  
+
+   RefreshData()
+   {
+    this.LoadData();
+   }
+
 }

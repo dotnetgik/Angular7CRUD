@@ -1,6 +1,6 @@
 
 <div class="container">
-<input  type="button" class="btn btn-primary"   data-toggle="modal" data-target="#myModal" value="Create New">
+<input  type="button" class="btn btn-primary" (click)="loadAddnew()"   data-toggle="modal" data-target="#myModal" value="Create New">
 
 <hr>
 
@@ -28,11 +28,11 @@
             <td scope="col">{{e.email}}</td>
             <td style="display:none">{{e.id}}</td>
             <td scope="col">
-                <button type="button" class="btn btn-default btn-primary" (click)="loadnewForm()" data-toggle="modal" data-target="#myModaledit">
+                <button type="button" class="btn btn-default btn-primary" (click)="loadnewForm(e.id,e.email,e.fname,e.lname,e.gender)" data-toggle="modal" data-target="#myModaledit">
                     <span class="glyphicon glyphicon-edit"></span> Edit
                   </button>
                   |
-                  <button type="button" class="btn btn-default btn-danger" (click)="deleteconfirmation()">
+                  <button type="button" class="btn btn-default btn-danger" (click)="deleteconfirmation(e.id)">
                       <span class="glyphicon glyphicon-trash"></span> Delete
                     </button>
 
@@ -46,42 +46,38 @@
     <div class="modal-dialog">
   <div class="modal-content">
         <div class="modal-header">
-          <button type="button" (click)="TakeHome()" class="close" data-dismiss="modal">&times;</button>
+          <button type="button"  class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-primary">Employee Add</h4>
         </div>
         <div class="modal-body">
 
  
-          <app-employee-add></app-employee-add> 
+          <app-employee-add #empadd (nameEvent)="RefreshData($event)"></app-employee-add> 
         
         </div>
         <div class="modal-footer">
-          <button type="button" #closeBtn  class="btn btn-default" (click)="TakeHome()"  data-dismiss="modal">Close</button>
+          <button type="button" #closeBtn  class="btn btn-default"  data-dismiss="modal">Close</button>
         </div>
       </div>
     
     </div>
     </div>
 
-
-
-
-
-    <div id="myModaledit" class="modal fade" role="dialog">
+<div id="myModaledit" class="modal fade" role="dialog">
         <div class="modal-dialog">
       <div class="modal-content">
             <div class="modal-header">
-              <button type="button" class="close" (click)="TakeHome()" data-dismiss="modal">&times;</button>
+              <button type="button" class="close"  data-dismiss="modal">&times;</button>
               <h4 class="modal-title">Edit</h4>
             </div>
             <div class="modal-body">
-             <app-employeeupdate [isReset] ="resetForm" #regForm></app-employeeupdate>
+             <app-employeeupdate (nameEvent)="RefreshData($event)" [isReset] ="resetForm" #regForm></app-employeeupdate>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-default" (click)="TakeHome()" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-default"  data-dismiss="modal">Close</button>
             </div>
           </div>
       
         </div>
-      </div>
+</div>
   

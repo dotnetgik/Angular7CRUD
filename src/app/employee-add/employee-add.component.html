@@ -4,7 +4,7 @@
  
  <div class="container" style="border:thin">
   
- <form #regForm='ngForm' (ngSubmit)="Register(regForm)" class="form-horizontal" style="width:50%"  >
+ <form #empadd='ngForm' (ngSubmit)="Register(empadd)" class="form-horizontal" style="width:50%"  >
       
   <div class="form-group" >
             <label class="control-label col-sm-2" for="fname" >First Name:</label>
@@ -48,5 +48,5 @@
           </div>
         </form>
       </div>
-      <button style="display:none" type="button" #closeBtn  class="btn btn-default" (click)="TakeHome()"  data-dismiss="modal">Close</button>
+      <button style="display:none" type="button" #closeBtn  class="btn btn-default"   data-dismiss="modal">Close</button>
     
