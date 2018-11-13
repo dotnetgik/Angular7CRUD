@@ -9,7 +9,7 @@ import {EmployeeDataService} from '../DataService/EmployeeDataService'
   styleUrls: ['./employee-add.component.sass']
 })
 export class EmployeeAddComponent implements OnInit {
-  @Input()  dynamicdata: string = 'Employee Add';
+  
   @Input()  cleardata: boolean = false;
   @Output() nameEvent = new EventEmitter<string>();
   objtempemp:Employee;
@@ -20,15 +20,12 @@ constructor(private dataservice:EmployeeDataService,private route:Router) {
  }
  
   ngOnInit() {
-   this.ResetValues();
+  // this.ResetValues();
   }
 
   ResetValues(){  
    
-    this.objemp.email="";
-    this.objemp.firstname="";
-    this.objemp.lastname="";
-    this.objemp.gender=0;
+   
   }  
  
 

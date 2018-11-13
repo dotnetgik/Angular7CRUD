@@ -8,33 +8,31 @@ import { Employee } from 'src/Models/Employee';
   templateUrl: './employeeupdate.component.html',
   styleUrls: ['./employeeupdate.component.sass']
 })
-export class EmployeeupdateComponent implements OnInit
- {
+export class EmployeeupdateComponent implements OnInit {
 
-  constructor(private dataservice:EmployeeDataService,private route:Router) {
- 
+  constructor(private dataservice: EmployeeDataService, private route: Router) {
+
   }
   @Output() nameEvent = new EventEmitter<string>();
   @ViewChild('closeBtn') cb: ElementRef;
   ngOnInit() {
   }
 
-  @Input() reset:boolean = false;
+  @Input() reset: boolean = false;
   @ViewChild('regForm') myForm: NgForm;
   @Input() isReset: boolean = false;
-  objtempemp:Employee;
-  @Input() objemp :Employee=new Employee();
+  objtempemp: Employee;
+  @Input() objemp: Employee = new Employee();
 
-  EditEmployee(regForm:NgForm)
-  {
-   
-    this.dataservice.EditEmployee(this.objemp).subscribe(res=>
-      {
+  EditEmployee(regForm: NgForm) {
+
+
+    this.dataservice.EditEmployee(this.objemp).subscribe(res => {
       alert("Employee updated successfully");
       this.nameEvent.emit("ccc");
       this.cb.nativeElement.click();
-     
-      }
-  }
+
+    },
+  };
 
 }
