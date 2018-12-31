@@ -33,6 +33,6 @@ export class EmployeeupdateComponent implements OnInit {
       this.cb.nativeElement.click();
 
     },
-  }
+    )}
 
 }
